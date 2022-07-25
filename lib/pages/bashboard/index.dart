@@ -5,6 +5,7 @@ import 'package:urgent/pages/account/index.dart';
 import 'package:urgent/pages/alerts/index.dart';
 import 'package:urgent/pages/home/index.dart';
 import 'package:urgent/pages/news/index.dart';
+import 'package:urgent/pages/posts/index.dart';
 import 'controller.dart';
 
 class DashBoardPage extends GetView<DashBoardController> {
@@ -18,7 +19,7 @@ class DashBoardPage extends GetView<DashBoardController> {
             index: controller.tabIndex.value,
             children: [
               HomePage(),
-              NewsPage(),
+              PostsPage(),
               AlertsPage(),
               AccountPage(),
             ],
