@@ -6,10 +6,18 @@ class AccountPage extends GetView<AccountController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Account"),
+      body: Container(
+        child: Center(
+          child: Column(
+            children: <Widget>[
+              Obx(() => Text("Counter ${controller.counter.value}")),
+              ElevatedButton(onPressed: (){
+                controller.increaseCounter();
+              }, child: Text("Increase")),
+            ],
+          ),
+        ),
       ),
-      body: Center(child: Text("AccountPage ${controller.name}"),),
     );
   }
 }

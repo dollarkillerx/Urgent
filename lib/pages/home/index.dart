@@ -7,15 +7,11 @@ class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(controller.title),
+      ),
       body: Center(
-        child: ElevatedButton(
-          child: Text("Account"),
-          onPressed: () {
-            Get.toNamed(AppRoutes.ACCOUNT,arguments: {
-              'name': 'Dollar Killer',
-            });
-          },
-        ),
+        child: Text("Home Page", style: TextStyle(fontSize: 20),),
       ),
     );
   }
