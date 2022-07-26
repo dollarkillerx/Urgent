@@ -1,23 +1,24 @@
+import 'package:barcode_scan2/platform_wrapper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../components/jiugongge.dart';
 import 'controller.dart';
 import 'dart:async';
 import 'package:flutter/services.dart';
-import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
 class ToolsPage extends GetView<ToolsController> {
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> scanBarcodeNormal() async {
-    String barcodeScanRes;
-    // Platform messages may fail, so we use a try/catch PlatformException.
     try {
-      barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
-          '#ff6666', '返回', true, ScanMode.BARCODE);
-    } on PlatformException {
-      barcodeScanRes = '获取平台版本失败.';
+      var result = await BarcodeScanner.scan();
+      print(result.type); // The result type (barcode, cancelled, failed)
+      print(result.rawContent); // The barcode content
+      print(result.format); // The barcode format (as enum)
+      print(result.formatNote); // If a unknown format was scanned this field contains a note
+      controller.setScanBarcode(result.rawContent);
+    }on PlatformException {
+      print("errpr");
     }
-    controller.setScanBarcode(barcodeScanRes) ;
   }
 
   @override
