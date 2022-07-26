@@ -38,7 +38,7 @@ class ToolsPage extends GetView<ToolsController> {
           children: <Widget>[
             Jiugongge(
               icon: Icons.qr_code,
-              title: "在綫掃描商品",
+              title: "掃描網絡上的商品",
               onTap: () {
                 scanBarcodeNormal();
               },
