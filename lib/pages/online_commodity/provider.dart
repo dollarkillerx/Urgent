@@ -7,8 +7,8 @@ class GoodsProvider {
     required Function(NetGoods posts) onSuccess,
     Function(dynamic error)? onError,
   }) async {
-    print('https://openapi.worldlink.net.cn/v1/barcodes/$barcode');
-    await ApiRequest(url: 'https://openapi.worldlink.net.cn/v1/barcodes/$barcode',data: null).get(
+    // print('https://openapi.worldlink.net.cn/v1/barcodes/$barcode');
+    ApiRequest(url: 'https://openapi.worldlink.net.cn/v1/barcodes/$barcode',data: null).get(
       onSuccess: (data) {
         Map<String, dynamic> postsJson = data as Map<String, dynamic>;
         NetGoods posts = NetGoods.fromJson(postsJson);

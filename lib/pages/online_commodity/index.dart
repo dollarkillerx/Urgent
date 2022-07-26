@@ -7,7 +7,6 @@ import 'controller.dart';
 class OnlineCommodityPage extends GetView<OnlineCommodityController> {
 
   _goods() {
-    controller.getBarcode();
     if (controller.netGoods == null) {
       return R404(title: "當前條碼未查詢到網絡記錄",);
     }

@@ -12,32 +12,16 @@ class ApiRequest {
     }));
   }
 
-  Future<void> get({
+  get({
     Function()? beforeSend,
     Function(dynamic data)? onSuccess,
     Function(dynamic error)? onError,
-  }) async {
-    Response resp = await _dio().get(url, queryParameters: data);
-    if (resp.statusCode != 200) {
-      if (onError != null) {
-        onError(resp);
-        return;
-      }
-    }
-
-    if (onSuccess != null) {
-      onSuccess(resp.data);
-    }
+  }) {
+    _dio().get(url, queryParameters: data).then((res) {
+      if (onSuccess != null) onSuccess(res.data);
+    }).catchError((error) {
+      if (onError != null) onError(error);
+    });
   }
 }
-// Future<void> get({
-//   Function()? beforeSend,
-//   Function(dynamic data)? onSuccess,
-//   Function(dynamic error)? onError,
-// }) async {
-//   _dio().get(url, queryParameters: data).then((res) {
-//     if (onSuccess != null) onSuccess(res.data);
-//   }).catchError((error) {
-//     if (onError != null) onError(error);
-//   });
-// }
+

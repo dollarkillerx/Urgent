@@ -9,21 +9,21 @@ class OnlineCommodityController extends GetxController {
   NetGoods? netGoods;
   bool isLoading = true;
 
-  void getBarcode() {
-    Future.delayed(Duration.zero, () async {
-      await GoodsProvider().getGoodsData(
-          barcode: barcode,
-          onSuccess: ((resp) {
-            netGoods = resp;
-            isLoading = false;
-            update();
-          }),
-          onError: (error) {
-            isLoading = false;
-            print(error);
-            print('PostsProvider error');
-            update();
-          });
-    });
+  @override
+  void onInit() {
+    GoodsProvider().getGoodsData(
+        barcode: barcode,
+        onSuccess: ((resp) {
+          netGoods = resp;
+          isLoading = false;
+          update();
+        }),
+        onError: (error) {
+          isLoading = false;
+          print(error);
+          print('PostsProvider error');
+          update();
+        });
+    super.onInit();
   }
 }
