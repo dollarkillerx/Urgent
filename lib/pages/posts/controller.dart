@@ -12,8 +12,6 @@ class PostsController extends GetxController {
       print("PostsProvider beforeSend");
     }, onSuccess: (posts) {
       this.isLoading = false;
-      // print('PostsProvider success');
-      // print(posts.length);
       postsList.addAll(posts);
     }, onError: (error) {
       this.isLoading = false;

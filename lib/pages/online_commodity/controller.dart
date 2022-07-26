@@ -1,12 +1,13 @@
 import 'package:get/get.dart';
 import 'package:urgent/common/entity/net_goods.dart';
+import 'package:urgent/common/entity/tobacco.dart';
 import 'package:urgent/pages/online_commodity/provider.dart';
 
 class OnlineCommodityController extends GetxController {
   final String barcode = Get.arguments["barcode"];
 
-  // final String barcode = "6902890232421";
   NetGoods? netGoods;
+  Tobacco? tobacco;
   bool isLoading = true;
 
   @override
@@ -19,10 +20,17 @@ class OnlineCommodityController extends GetxController {
           update();
         }),
         onError: (error) {
-          isLoading = false;
-          // print(error);
-          // print('PostsProvider error');
-          update();
+          GoodsProvider().getTobaccoData(
+              barcode: barcode,
+              onSuccess: ((resp) {
+                tobacco = resp;
+                isLoading = false;
+                update();
+              }),
+              onError: (error) {
+                isLoading = false;
+                update();
+              });
         });
     super.onInit();
   }
