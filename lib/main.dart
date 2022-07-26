@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
       title: "Urgent Manager",
       debugShowCheckedModeBanner: false,
       initialRoute: AppPages.INIT,
+      // initialRoute: "/home/online_commodity",
       getPages: AppPages.routes,
       unknownRoute: AppPages.unknownRoute,
       debugShowMaterialGrid: false,

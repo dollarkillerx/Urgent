@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:urgent/pages/account/index.dart';
-import 'package:urgent/pages/alerts/index.dart';
 import 'package:urgent/pages/home/index.dart';
-import 'package:urgent/pages/news/index.dart';
-import 'package:urgent/pages/posts/index.dart';
+import 'package:urgent/pages/tools/index.dart';
 import 'controller.dart';
 
 class DashBoardPage extends GetView<DashBoardController> {
@@ -13,15 +10,13 @@ class DashBoardPage extends GetView<DashBoardController> {
   Widget build(BuildContext context) {
     return GetBuilder<DashBoardController>(builder: (controller) {
       return Scaffold(
-        body: SafeArea(
+        body: Container(
           // SafeArea 兼容各種屏幕
           child: IndexedStack(
             index: controller.tabIndex.value,
             children: [
               HomePage(),
-              PostsPage(),
-              AlertsPage(),
-              AccountPage(),
+              ToolsPage(),
             ],
           ),
         ),
@@ -35,9 +30,7 @@ class DashBoardPage extends GetView<DashBoardController> {
           showUnselectedLabels: true,  // 顯示未選中的labels
           items: <BottomNavigationBarItem>[
             _bottomNavigationBarItem(CupertinoIcons.home, "Home"),
-            _bottomNavigationBarItem(CupertinoIcons.news, "News"),
-            _bottomNavigationBarItem(CupertinoIcons.bell, "Alerts"),
-            _bottomNavigationBarItem(CupertinoIcons.person, "Account"),
+            _bottomNavigationBarItem(CupertinoIcons.briefcase, "Tools"),
           ],
         ),
       );
