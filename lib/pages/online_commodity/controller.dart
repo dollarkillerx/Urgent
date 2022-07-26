@@ -20,8 +20,8 @@ class OnlineCommodityController extends GetxController {
         }),
         onError: (error) {
           isLoading = false;
-          print(error);
-          print('PostsProvider error');
+          // print(error);
+          // print('PostsProvider error');
           update();
         });
     super.onInit();
