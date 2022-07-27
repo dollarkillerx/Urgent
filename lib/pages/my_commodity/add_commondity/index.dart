@@ -74,9 +74,17 @@ class AddCommodityPage extends GetView<AddCommodityController> {
         }, child: Text("添加")),
         ElevatedButton(onPressed: () {
           Get.back();
-        }, child: Text("返回"))
+        }, child: Text("返回")),
+        imgp(),
       ],
     );
+  }
+
+  imgp() {
+    if (controller.image != null) {
+      return Image.file(controller.image!);
+    }
+    return SizedBox();
   }
 
   @override
