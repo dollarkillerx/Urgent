@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:urgent/pages/account/controller.dart';
 import 'package:urgent/pages/category/controller.dart';
 import 'package:urgent/pages/home/controller.dart';
 import 'package:urgent/pages/tools/controller.dart';
@@ -11,9 +10,8 @@ class DashBoardBinding extends Bindings {
   void dependencies() {
     Get.lazyPut<DashBoardController>(() => DashBoardController());
     Get.lazyPut<HomeController>(() => HomeController());
-    Get.lazyPut<ToolsController>(() => ToolsController());
-    Get.lazyPut<AccountController>(() => AccountController());
-    Get.lazyPut<AccountProvider>(() => AccountProvider());
-    Get.put( CategoryController());
+    // Get.put<ToolsController>(() => ToolsController());
+    Get.put(ToolsController());
+    Get.put(CategoryController());
   }
 }

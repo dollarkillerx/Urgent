@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:urgent/common/routes/app_routes.dart';
-import 'package:urgent/common/storage/localstorage.dart';
-
 import '../entity/gener_resp.dart';
+import '../entity/jwt.dart';
+import '../storage/user_info.dart';
 
 const SERVER_API_URL = "http://192.168.31.223:8574/api/v1";
 
@@ -19,13 +19,16 @@ class NetTools {
 class BaseProvider extends GetConnect {
   @override
   void onInit() {
-    httpClient.baseUrl = "http://192.168.31.223:8574/api/v1";
+    httpClient.baseUrl = SERVER_API_URL;
 
     // 请求拦截
     httpClient.addRequestModifier<void>((request) async {
-      String? r = await LocalStorage.getString("action_jwt");
+      ActiveUser? r = await UserInfoData.getActiveAccount();
       if (r != null) {
-        request.headers['Authorization'] = r;
+        String? rx = await UserInfoData.getUserJWT(r.account!);
+        if (rx != null) {
+          request.headers['Authorization'] = rx;
+        }
       }
 
       return request;

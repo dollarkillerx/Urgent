@@ -8,7 +8,7 @@ class OnlineCommodityPage extends GetView<OnlineCommodityController> {
 
   _goods() {
     if (controller.netGoods == null && controller.tobacco == null) {
-      return R404(title: "當前條碼未查詢到網絡記錄",);
+      return R404(title: "當前條碼未查詢到網絡記錄    ${controller.barcode}",);
     }
 
     if (controller.netGoods != null) {

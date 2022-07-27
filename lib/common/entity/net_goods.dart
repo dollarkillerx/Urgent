@@ -2,7 +2,7 @@ class NetGoods {
   String? id;
   String? createdAt;
   String? updatedAt;
-  Null? deletedAt;
+  String? deletedAt;
   String? barcode;
   String? name;
   String? spec;

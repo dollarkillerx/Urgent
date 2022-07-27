@@ -8,14 +8,14 @@ import 'package:flutter/services.dart';
 
 class ToolsPage extends GetView<ToolsController> {
   // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> scanBarcodeNormal() async {
+  Future<void> scanBarcodeNormal(int c1) async {
     try {
       var result = await BarcodeScanner.scan();
       print(result.type); // The result type (barcode, cancelled, failed)
       print(result.rawContent); // The barcode content
       print(result.format); // The barcode format (as enum)
       print(result.formatNote); // If a unknown format was scanned this field contains a note
-      controller.setScanBarcode(result.rawContent);
+      controller.setScanBarcode(result.rawContent,c1);
     }on PlatformException {
       print("errpr");
     }
@@ -33,12 +33,15 @@ class ToolsPage extends GetView<ToolsController> {
               icon: Icons.qr_code,
               title: "掃描網絡上的商品",
               onTap: () {
-                scanBarcodeNormal();
+                scanBarcodeNormal(0);
               },
             ),
             Jiugongge(
-              icon: Icons.webhook_sharp,
-              title: "開發中...",
+              icon: Icons.qr_code_scanner_sharp,
+              title: "我的商品",
+              onTap: () {
+                scanBarcodeNormal(1);
+              },
             ),
             Jiugongge(
               icon: Icons.webhook_sharp,

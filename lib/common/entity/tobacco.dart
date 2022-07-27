@@ -2,7 +2,7 @@ class Tobacco {
   String? id;
   String? createdAt;
   String? updatedAt;
-  Null? deletedAt;
+  String? deletedAt;
   String? dataSource;
   String? sourceId;
   String? boxCode;
@@ -11,8 +11,8 @@ class Tobacco {
   String? specification;
   String? proPlace;
   int? packQuantity;
-  int? price;
-  int? tarContent;
+  double? price;
+  double? tarContent;
 
   Tobacco(
       {this.id,

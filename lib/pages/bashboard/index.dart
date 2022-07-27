@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:urgent/pages/account/index.dart';
 import 'package:urgent/pages/home/index.dart';
 import 'package:urgent/pages/tools/index.dart';
 import '../category/index.dart';

@@ -26,6 +26,7 @@ class CategoryPage extends GetView<CategoryController> {
                 Get.toNamed(AppRoutes.ACCOUNT);
               },
             ),
+
           ],
         );
       }),
