@@ -13,6 +13,8 @@ class CategoryPage extends GetView<CategoryController> {
       child: GetBuilder<CategoryController>(builder: (controller) {
         return Column(
           children: <Widget>[
+            controller.up(),
+            controller.showUserList(),
             ListTile(
               leading: CircleAvatar(
                 child: Icon(CupertinoIcons.person),

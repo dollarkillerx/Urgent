@@ -19,6 +19,22 @@ class UserInfoData {
     await LocalStorage.setString(account, jwt);
   }
 
+  static Future<List<UserJWT>?> userList() async {
+    List<String>? userList =  await LocalStorage.getStringList("user_list");
+    if (userList == null) {
+      return null;
+    }
+
+    List<UserJWT> uList  = [];
+
+    for (var value in userList) {
+      UserJWT p = UserJWT.fromJson(json.decode(value));
+      uList.add(p);
+    }
+
+    return uList;
+  }
+
   static logout(String account) async {
     List<String>? userList =  await LocalStorage.getStringList("user_list");
     userList ??= [];
@@ -29,6 +45,13 @@ class UserInfoData {
       UserJWT p = UserJWT.fromJson(json.decode(value));
       if (p.account != account) {
         newList.add(value);
+      }
+    }
+
+    var atv = await UserInfoData.getActiveAccount();
+    if (atv != null) {
+      if (atv.account == account) {
+        await LocalStorage.remove("active");
       }
     }
 
