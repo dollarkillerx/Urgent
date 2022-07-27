@@ -35,7 +35,6 @@ class DashBoardPage extends GetView<DashBoardController> {
             children: [
               HomePage(),
               ToolsPage(),
-              AccountPage(),
             ],
           ),
         ),
@@ -50,7 +49,6 @@ class DashBoardPage extends GetView<DashBoardController> {
           items: <BottomNavigationBarItem>[
             _bottomNavigationBarItem(CupertinoIcons.home, "Home"),
             _bottomNavigationBarItem(CupertinoIcons.briefcase, "Tools"),
-            _bottomNavigationBarItem(CupertinoIcons.person, "User"),
           ],
         ),
 
