@@ -25,14 +25,6 @@ class ToolsPage extends GetView<ToolsController> {
   Widget build(BuildContext context) {
     return GetBuilder<ToolsController>(builder: (controller) {
       return Scaffold(
-        appBar: AppBar(
-          title: Text(
-            "Tools 工具箱",
-            style: TextStyle(color: Colors.black),
-          ),
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-        ),
         body: GridView.count(
           crossAxisCount: 2,
           // childAspectRatio: 1.6,

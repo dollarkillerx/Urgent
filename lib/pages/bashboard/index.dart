@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:urgent/pages/account/index.dart';
 import 'package:urgent/pages/home/index.dart';
 import 'package:urgent/pages/tools/index.dart';
+import '../category/index.dart';
 import 'controller.dart';
 
 class DashBoardPage extends GetView<DashBoardController> {
@@ -11,6 +12,22 @@ class DashBoardPage extends GetView<DashBoardController> {
   Widget build(BuildContext context) {
     return GetBuilder<DashBoardController>(builder: (controller) {
       return Scaffold(
+        appBar: AppBar(
+          title: Text(
+            controller.title,
+            style: TextStyle(color: Colors.black),
+          ),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          leading: Builder(builder: (context){
+            return IconButton(
+              icon: Icon(Icons.dehaze_sharp,color: Colors.black,),
+              onPressed: (){
+                Scaffold.of(context).openDrawer();
+              },
+            );
+          }),
+        ),
         body: Container(
           // SafeArea 兼容各種屏幕
           child: IndexedStack(
@@ -35,6 +52,10 @@ class DashBoardPage extends GetView<DashBoardController> {
             _bottomNavigationBarItem(CupertinoIcons.briefcase, "Tools"),
             _bottomNavigationBarItem(CupertinoIcons.person, "User"),
           ],
+        ),
+
+        drawer: Drawer(
+          child: CategoryPage(),
         ),
       );
     });

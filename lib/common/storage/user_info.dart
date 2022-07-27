@@ -14,6 +14,7 @@ class UserInfoData {
     userList ??= [];
     userList.add(json.encode(UserJWT(account: account,jwt: jwt,storehouse: storehouse).toJson()));
 
+    await UserInfoData.activeAccount(account, storehouse);
     await LocalStorage.setStringList("user_list", userList);
     await LocalStorage.setString(account, jwt);
   }
@@ -33,6 +34,19 @@ class UserInfoData {
 
     await LocalStorage.setStringList("user_list", newList);
     await LocalStorage.remove(account);
+  }
+  
+  static activeAccount(String account,String storehouse) async {
+    await LocalStorage.setString("active", json.encode(ActiveUser(account: account,storehouse: storehouse)));
+  }
+
+  static Future<ActiveUser?> getActiveAccount() async {
+    var value = await LocalStorage.getString("active");
+    if (value == null) {
+      return null;
+    }
+    ActiveUser p = ActiveUser.fromJson(json.decode(value));
+    return p;
   }
 }
 

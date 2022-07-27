@@ -62,3 +62,22 @@ class UserJWT {
     return data;
   }
 }
+
+class ActiveUser {
+  String? account;
+  String? storehouse;
+
+  ActiveUser({this.account, this.storehouse});
+
+  ActiveUser.fromJson(Map<String, dynamic> json) {
+    account = json['account'];
+    storehouse = json['storehouse'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['account'] = this.account;
+    data['storehouse'] = this.storehouse;
+    return data;
+  }
+}
