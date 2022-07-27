@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:urgent/common/storage/user_info.dart';
 import '../../common/entity/jwt.dart';
+import '../../common/routes/app_routes.dart';
 
 class CategoryController extends GetxController {
   List<UserJWT>? userList;
@@ -23,18 +24,22 @@ class CategoryController extends GetxController {
     List<Widget> t = [];
     for (var i in userList!) {
       t.add(
-        ListTile(
-          leading: Icon(Icons.pedal_bike_sharp),
-          trailing: InkWell(
-            child: Icon(Icons.logout,),
+          ListTile(
+            leading: Icon(Icons.pedal_bike_sharp),
+            trailing: InkWell(
+              child: Icon(Icons.logout,),
+              onTap: () {
+                UserInfoData.logout(i.account!);
+                Get.offAllNamed(AppRoutes.DASHBOARD);
+              },
+            ),
+            title: Text(i.storehouse!),
+            subtitle: Text(i.account!),
             onTap: () {
-              UserInfoData.logout(i.account!);
-              Get.back();
+              UserInfoData.activeAccount(i.account!,i.storehouse!);
+              Get.offAllNamed(AppRoutes.DASHBOARD);
             },
-          ),
-          title: Text(i.storehouse!),
-          subtitle: Text(i.account!),
-        )
+          )
       );
     }
 
