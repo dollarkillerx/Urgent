@@ -15,6 +15,7 @@ void main() {
     SystemChrome.setSystemUIOverlayStyle(style);
   }
 
+
   runApp(const MyApp());
 }
 

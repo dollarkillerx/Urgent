@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:urgent/pages/account/index.dart';
 import 'package:urgent/pages/home/index.dart';
 import 'package:urgent/pages/tools/index.dart';
 import 'controller.dart';
@@ -17,6 +18,7 @@ class DashBoardPage extends GetView<DashBoardController> {
             children: [
               HomePage(),
               ToolsPage(),
+              AccountPage(),
             ],
           ),
         ),
@@ -31,6 +33,7 @@ class DashBoardPage extends GetView<DashBoardController> {
           items: <BottomNavigationBarItem>[
             _bottomNavigationBarItem(CupertinoIcons.home, "Home"),
             _bottomNavigationBarItem(CupertinoIcons.briefcase, "Tools"),
+            _bottomNavigationBarItem(CupertinoIcons.person, "User"),
           ],
         ),
       );
