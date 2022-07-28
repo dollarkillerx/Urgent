@@ -10,51 +10,26 @@ class MyCommodityController extends GetxController {
   bool isLoading = true;
   Good? good;
 
-  int abc = 0;
-
   MyCommodityProvider provider = Get.find();
 
-  netData() {
-    if (abc == 1) {
-      abc = 0;
-      return SizedBox();
+  flashPage() async {
+    Response response = await provider.search(barcode);
+    var err = NetTools.CheckError(response.body);
+    if (err != null) {
+      isLoading = false;
+      update();
+      return;
     }
 
-    print("object");
-    provider.search(barcode).then((response) => {
-      () {
-        abc = 1;
-        print("object cccccc");
-        var err = NetTools.CheckError(response.body);
-        if (err != null) {
-          isLoading = false;
-          update();
-          return;
-        }
+    good = Good.fromJson(response.body);
+    isLoading = false;
 
-        good = Good.fromJson(response.body);
-        isLoading = false;
-        update();
-      }()
-    });
-
-    return SizedBox();
+    update();
   }
 
   @override
   Future<void> onInit() async {
-    // Response response = await provider.search(barcode);
-    // var err = NetTools.CheckError(response.body);
-    // if (err != null) {
-    //   isLoading = false;
-    //   update();
-    //   return;
-    // }
-    //
-    // good = Good.fromJson(response.body);
-    // isLoading = false;
-    //
-    // update();
+    await flashPage();
     super.onInit();
   }
 }

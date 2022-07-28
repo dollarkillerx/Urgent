@@ -51,15 +51,17 @@ class MyCommodityPage extends GetView<MyCommodityController> {
             return SizedBox();
           }(),
           ElevatedButton(
-              onPressed: () {
-                Get.toNamed("/home/warehousing",
+              onPressed: () async {
+                await Get.toNamed("/home/warehousing",
                     arguments: {"goods": controller.good});
+                  controller.flashPage();
               },
               child: Text("入库")),
           ElevatedButton(
-              onPressed: () {
-                Get.toNamed("/home/out_stock",
+              onPressed: () async {
+                await Get.toNamed("/home/out_stock",
                     arguments: {"goods": controller.good});
+                controller.flashPage();
               },
               child: Text("出库")),
           ElevatedButton(
@@ -101,9 +103,6 @@ class MyCommodityPage extends GetView<MyCommodityController> {
             "我的商品",
             style: TextStyle(color: Colors.black),
           ),
-          actions: <Widget>[
-            controller.netData(),
-          ],
           backgroundColor: Colors.transparent,
           elevation: 0,
         ),
