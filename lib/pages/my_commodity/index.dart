@@ -59,7 +59,7 @@ class MyCommodityPage extends GetView<MyCommodityController> {
           ElevatedButton(
               onPressed: () {
                 Get.toNamed("/home/out_stock",
-                    arguments: {"barcode": controller.barcode});
+                    arguments: {"goods": controller.good});
               },
               child: Text("出库")),
           ElevatedButton(
@@ -101,12 +101,18 @@ class MyCommodityPage extends GetView<MyCommodityController> {
             "我的商品",
             style: TextStyle(color: Colors.black),
           ),
+          actions: <Widget>[
+            controller.netData(),
+          ],
           backgroundColor: Colors.transparent,
           elevation: 0,
         ),
-        body: LoadingOverlay(
-          isLoading: controller.isLoading,
-          child: _goods(),
+        body: Padding(
+          padding: EdgeInsets.all(10),
+          child: LoadingOverlay(
+            isLoading: controller.isLoading,
+            child: _goods(),
+          ),
         ),
       );
     });
