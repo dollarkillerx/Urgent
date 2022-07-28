@@ -45,7 +45,7 @@ class MyCommodityPage extends GetView<MyCommodityController> {
             subtitle: Text("${controller.good!.data!.totalCost!} 元"),
           ),
           () {
-            if (controller.good!.data!.img != null) {
+            if (controller.good!.data!.img != "") {
               return Image.network(controller.good!.data!.img!);
             }
             return SizedBox();

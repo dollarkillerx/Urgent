@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:flutter/services.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:get/get.dart';
 import 'package:urgent/common/routes/app_pages.dart';
 import 'package:urgent/theme/app_themes.dart';
@@ -36,6 +37,10 @@ class MyApp extends StatelessWidget {
       darkTheme: AppThemes.dark,
       theme: AppThemes.light,
       themeMode: ThemeMode.system,
+      navigatorObservers: [
+        FlutterSmartDialog.observer,
+      ],
+      builder: FlutterSmartDialog.init(),
     );
   }
 }

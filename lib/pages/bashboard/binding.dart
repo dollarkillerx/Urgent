@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:urgent/pages/category/controller.dart';
 import 'package:urgent/pages/home/controller.dart';
 import 'package:urgent/pages/tools/controller.dart';
-import '../account/provider.dart';
+import '../home/provider.dart';
 import 'controller.dart';
 
 class DashBoardBinding extends Bindings {
@@ -13,5 +13,6 @@ class DashBoardBinding extends Bindings {
     // Get.put<ToolsController>(() => ToolsController());
     Get.put(ToolsController());
     Get.put(CategoryController());
+    Get.put(HomeProvider());
   }
 }
