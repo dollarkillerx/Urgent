@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:urgent/components/loading_overlay.dart';
 import 'controller.dart';
 
-
 class MyCommodityPage extends GetView<MyCommodityController> {
   _goods() {
     if (controller.good != null) {
@@ -45,15 +44,27 @@ class MyCommodityPage extends GetView<MyCommodityController> {
             title: Text("总成本"),
             subtitle: Text("${controller.good!.data!.totalCost!} 元"),
           ),
-          ElevatedButton(onPressed: () {
-            Get.back();
-          }, child: Text("入库")),
-          ElevatedButton(onPressed: () {
-            Get.back();
-          }, child: Text("出库")),
-          ElevatedButton(onPressed: () {
-            Get.back();
-          }, child: Text("返回"))
+          () {
+            if (controller.good!.data!.img != null) {
+              return Image.network(controller.good!.data!.img!);
+            }
+            return SizedBox();
+          }(),
+          ElevatedButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: Text("入库")),
+          ElevatedButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: Text("出库")),
+          ElevatedButton(
+              onPressed: () {
+                Get.back();
+              },
+              child: Text("返回"))
         ],
       );
     }
@@ -64,12 +75,17 @@ class MyCommodityPage extends GetView<MyCommodityController> {
         ListTile(
           title: Text("當前條碼未查詢到網絡記錄 ${controller.barcode}"),
         ),
-        ElevatedButton(onPressed: () {
-          Get.toNamed("/home/add_commodity",arguments: {"barcode": controller.barcode});
-        }, child: Text("添加商品")),
-        ElevatedButton(onPressed: () {
-          Get.back();
-        }, child: Text("返回"))
+        ElevatedButton(
+            onPressed: () {
+              Get.toNamed("/home/add_commodity",
+                  arguments: {"barcode": controller.barcode});
+            },
+            child: Text("添加商品")),
+        ElevatedButton(
+            onPressed: () {
+              Get.back();
+            },
+            child: Text("返回"))
       ],
     );
   }

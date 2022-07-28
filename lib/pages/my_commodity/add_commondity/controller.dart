@@ -1,10 +1,10 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:urgent/common/entity/add_good.dart';
+import 'package:urgent/common/entity/up_file.dart';
 import 'package:urgent/common/routes/app_routes.dart';
 import 'package:urgent/pages/my_commodity/add_commondity/provider.dart';
 import 'dart:io';
-import 'dart:async';
 import '../../../common/library/base_provider.dart';
 
 class AddCommodityController extends GetxController {
@@ -18,14 +18,41 @@ class AddCommodityController extends GetxController {
   var madeIn = TextEditingController();
   var price = TextEditingController();
   var cost = TextEditingController();
+  String imgUrl = "";
+
   AddCommodityProvider provider = Get.find();
 
+  setImg(File img) {
+    image = img;
+    update();
+  }
+
   addGoods() async {
-    if (!(name.text.isNotEmpty && price.text.isNotEmpty && cost.text.isNotEmpty)) {
+    if (!(name.text.isNotEmpty &&
+        price.text.isNotEmpty &&
+        cost.text.isNotEmpty)) {
       Get.snackbar("Error", "必填项未填写");
       return;
     }
 
+    if (image != null) {
+      var byt = await image!.readAsBytes();
+      MultipartFile f =
+          MultipartFile(byt, filename: image!.path);
+      FormData form = FormData({
+        'imgFile': f,
+      });
+      print(image!.path);
+      var r = await provider.uploadFile(form);
+      var err = NetTools.CheckError(r.body);
+      if (err != null) {
+        Get.snackbar("Error", err);
+        return;
+      }
+
+      UpFile fp = UpFile.fromJson(r.body);
+      imgUrl = fp.data!.url!;
+    }
 
     late AddGood good;
     try {
@@ -37,9 +64,9 @@ class AddCommodityController extends GetxController {
         madeIn: madeIn.text,
         cost: double.parse(cost.text),
         price: double.parse(price.text),
+        img: imgUrl,
       );
-    }
-    catch (e) {
+    } catch (e) {
       Get.snackbar("Error", "参数非法");
       return;
     }

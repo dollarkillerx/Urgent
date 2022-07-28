@@ -5,4 +5,5 @@ import 'dart:convert';
 
 class AddCommodityProvider extends BaseProvider {
   Future<Response> addGood(AddGood addGood) => post("/good", json.encode(addGood));
+  Future<Response> uploadFile(FormData fb) => post("/upload", fb);
 }

@@ -4,8 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:get/get.dart';
+import '../../../common/library/img.dart';
 import 'controller.dart';
 
+
+// https://www.freesion.com/article/9564219478/ 裁剪 一体化
 class AddCommodityPage extends GetView<AddCommodityController> {
 
   // 相機
@@ -13,8 +16,13 @@ class AddCommodityPage extends GetView<AddCommodityController> {
     try {
       final image = await ImagePicker().pickImage(source: ImageSource.camera);
       if(image == null) return;
-      final imageTemp = File(image.path);
-      controller.image = imageTemp;
+
+      // 压缩
+      var c = await Img.compressAndGetFile(File(image.path));
+      if(c == null) return;
+
+      // controller.image = c;
+      controller.setImg(c);
     } on PlatformException catch(e) {
       print('Failed to pick image: $e');
     }
