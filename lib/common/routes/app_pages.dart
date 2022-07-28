@@ -7,6 +7,10 @@ import 'package:urgent/pages/home/binding.dart';
 import 'package:urgent/pages/home/index.dart';
 import 'package:urgent/pages/my_commodity/binding.dart';
 import 'package:urgent/pages/my_commodity/index.dart';
+import 'package:urgent/pages/my_commodity/out_stock/binding.dart';
+import 'package:urgent/pages/my_commodity/out_stock/index.dart';
+import 'package:urgent/pages/my_commodity/warehousing/binding.dart';
+import 'package:urgent/pages/my_commodity/warehousing/index.dart';
 import 'package:urgent/pages/notfound/index.dart';
 import 'package:urgent/pages/online_commodity/binding.dart';
 import 'package:urgent/pages/online_commodity/index.dart';
@@ -37,6 +41,16 @@ class AppPages {
           name: AppRoutes.AddCommodity,
           page: () => AddCommodityPage(),
           binding: AddCommodityBinding(),
+        ),
+        GetPage(
+          name: AppRoutes.WareHousing,
+          page: () => WarehousingPage(),
+          binding: WarehousingBinding(),
+        ),
+        GetPage(
+          name: AppRoutes.OutStock,
+          page: () => OutStockPage(),
+          binding: OutStockBinding(),
         )
       ],
     ),

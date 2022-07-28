@@ -52,12 +52,14 @@ class MyCommodityPage extends GetView<MyCommodityController> {
           }(),
           ElevatedButton(
               onPressed: () {
-                Get.back();
+                Get.toNamed("/home/warehousing",
+                    arguments: {"goods": controller.good});
               },
               child: Text("入库")),
           ElevatedButton(
               onPressed: () {
-                Get.back();
+                Get.toNamed("/home/out_stock",
+                    arguments: {"barcode": controller.barcode});
               },
               child: Text("出库")),
           ElevatedButton(

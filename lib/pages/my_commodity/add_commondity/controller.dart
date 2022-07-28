@@ -42,7 +42,6 @@ class AddCommodityController extends GetxController {
       FormData form = FormData({
         'imgFile': f,
       });
-      print(image!.path);
       var r = await provider.uploadFile(form);
       var err = NetTools.CheckError(r.body);
       if (err != null) {
