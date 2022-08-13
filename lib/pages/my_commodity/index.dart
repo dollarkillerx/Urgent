@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:urgent/common/library/img.dart';
 import 'package:urgent/components/loading_overlay.dart';
 import 'controller.dart';
 
@@ -46,7 +47,7 @@ class MyCommodityPage extends GetView<MyCommodityController> {
           ),
           () {
             if (controller.good!.data!.img != "") {
-              return Image.network(controller.good!.data!.img!);
+              return cachedImage(controller.good!.data!.img!);
             }
             return SizedBox();
           }(),

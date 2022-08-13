@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:urgent/common/library/img.dart';
 import 'package:urgent/pages/home/provider.dart';
 import '../../common/entity/home_list.dart';
 import '../../common/library/base_provider.dart';
@@ -84,7 +85,7 @@ class HomeController extends GetxController {
                                   if (list.data![i].img != "") {
                                     return AspectRatio(
                                       aspectRatio: 1.0 / 2.0,
-                                      child: Image.network(list.data![i].img!),
+                                      child: cachedImage(list.data![i].img!),
                                     );
                                   }
                                   return SizedBox();
@@ -172,7 +173,7 @@ class HomeController extends GetxController {
                               if (list.data![i].img != "") {
                                 return AspectRatio(
                                   aspectRatio: 1.0 / 2.0,
-                                  child: Image.network(list.data![i].img!),
+                                  child: cachedImage(list.data![i].img!),
                                 );
                               }
                               return SizedBox();
