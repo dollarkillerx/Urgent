@@ -15,6 +15,7 @@ class AddCommodityController extends GetxController {
 
   var name = TextEditingController();
   var spec = TextEditingController();
+  var remark = TextEditingController();
   var brand = TextEditingController();
   var madeIn = TextEditingController();
   var price = TextEditingController();
@@ -68,6 +69,7 @@ class AddCommodityController extends GetxController {
           cost: double.parse(cost.text),
           price: double.parse(price.text),
           img: imgUrl,
+          remark: remark.text,
         );
       } catch (e) {
         Get.snackbar("Error", "参数非法");

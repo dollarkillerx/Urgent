@@ -10,6 +10,7 @@ class OutStockController extends GetxController {
 
   var numberProducts = TextEditingController();
   var cost = TextEditingController();
+  var remark = TextEditingController();
   var totalPrice = TextEditingController();
   var price = TextEditingController();
   var grossProfit = TextEditingController();
@@ -34,6 +35,7 @@ class OutStockController extends GetxController {
         cost: nc,
         numberProducts: np,
         price: ncp,
+        remark: remark.text,
       ));
       var err = NetTools.CheckError(response.body);
       if (err != null) {

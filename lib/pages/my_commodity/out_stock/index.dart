@@ -61,6 +61,12 @@ class OutStockPage extends GetView<OutStockController> {
             label: Text("单价"),
           ),
         ),
+        TextField(
+          controller: controller.remark,
+          decoration: InputDecoration(
+            label: Text("備注"),
+          ),
+        ),
         ElevatedButton(onPressed: () {
           controller.outStock();
         }, child: Text("出库")),

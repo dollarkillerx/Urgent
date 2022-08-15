@@ -74,6 +74,12 @@ class AddCommodityPage extends GetView<AddCommodityController> {
             label: Text("成本"),
           ),
         ),
+        TextField(
+          controller: controller.remark,
+          decoration: InputDecoration(
+            label: Text("備注"),
+          ),
+        ),
         ElevatedButton(onPressed: () {
           pickImage();
         }, child: Text("拍照")),

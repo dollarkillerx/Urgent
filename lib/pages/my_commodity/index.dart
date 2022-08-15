@@ -65,6 +65,7 @@ class MyCommodityPage extends GetView<MyCommodityController> {
                 controller.flashPage();
               },
               child: Text("出库")),
+
           ElevatedButton(
               onPressed: () {
                 Get.back();
