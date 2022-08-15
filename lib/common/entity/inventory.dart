@@ -2,13 +2,15 @@ class Warehousing {
   String? barcode;
   double? cost;
   int? numberProducts;
+  String? remark;
 
-  Warehousing({this.barcode, this.cost, this.numberProducts});
+  Warehousing({this.barcode, this.cost, this.numberProducts,this.remark});
 
   Warehousing.fromJson(Map<String, dynamic> json) {
     barcode = json['barcode'];
     cost = json['cost'];
     numberProducts = json['number_products'];
+    remark = json['remark'];
   }
 
   Map<String, dynamic> toJson() {
@@ -16,6 +18,7 @@ class Warehousing {
     data['barcode'] = this.barcode;
     data['cost'] = this.cost;
     data['number_products'] = this.numberProducts;
+    data['remark'] = this.remark;
     return data;
   }
 }

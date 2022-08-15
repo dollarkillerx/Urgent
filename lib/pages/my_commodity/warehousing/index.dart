@@ -45,7 +45,12 @@ class WarehousingPage extends GetView<WarehousingController> {
             label: Text("单一商品成本"),
           ),
         ),
-
+        TextField(
+          controller: controller.remark,
+          decoration: InputDecoration(
+            label: Text("備注"),
+          ),
+        ),
         ElevatedButton(onPressed: () {
           controller.warehousing();
         }, child: Text("入库")),

@@ -11,6 +11,8 @@ class WarehousingController extends GetxController {
   var numberProducts = TextEditingController();
   var cost = TextEditingController();
   var costOl = TextEditingController();
+  var remark = TextEditingController();
+
 
   RxString controllerText = ''.obs;
   RxString controllerText2 = ''.obs;
@@ -29,6 +31,7 @@ class WarehousingController extends GetxController {
       var response = await provider.warehousing(Warehousing(
         barcode: goods.data!.barcode,
         cost: nc,
+        remark: remark.text,
         numberProducts: np,
       ));
       var err = NetTools.CheckError(response.body);

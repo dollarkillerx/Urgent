@@ -7,7 +7,6 @@ class AddGood {
   String? brand;
   String? madeIn;
   String? img;
-  String? remark;
 
   AddGood(
       {this.barcode,
@@ -17,7 +16,7 @@ class AddGood {
         this.price,
         this.brand,
         this.madeIn,
-        this.img,this.remark});
+        this.img});
 
   AddGood.fromJson(Map<String, dynamic> json) {
     barcode = json['barcode'];
@@ -28,7 +27,6 @@ class AddGood {
     brand = json['brand'];
     madeIn = json['made_in'];
     img = json['img'];
-    remark = json['remark'];
   }
 
   Map<String, dynamic> toJson() {
@@ -41,7 +39,6 @@ class AddGood {
     data['brand'] = this.brand;
     data['made_in'] = this.madeIn;
     data['img'] = this.img;
-    data['remark'] = this.remark;
     return data;
   }
 }
