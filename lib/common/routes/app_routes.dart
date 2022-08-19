@@ -7,6 +7,7 @@ class AppRoutes {
   static const String AddCommodity = '/add_commodity';
   static const String OutStock = '/out_stock';
   static const String WareHousing = '/warehousing';
+  static const String IOHistory = '/io_history';
 
 
 

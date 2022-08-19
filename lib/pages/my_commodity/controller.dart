@@ -12,6 +12,12 @@ class MyCommodityController extends GetxController {
 
   MyCommodityProvider provider = Get.find();
 
+  @override
+  Future<void> onInit() async {
+    await flashPage();
+    super.onInit();
+  }
+
   flashPage() async {
     Response response = await provider.search(barcode);
     var err = NetTools.CheckError(response.body);
@@ -27,9 +33,4 @@ class MyCommodityController extends GetxController {
     update();
   }
 
-  @override
-  Future<void> onInit() async {
-    await flashPage();
-    super.onInit();
-  }
 }

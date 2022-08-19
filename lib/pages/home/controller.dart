@@ -11,6 +11,7 @@ class HomeController extends GetxController {
 
   var search = TextEditingController();
   RxString searchText = ''.obs;
+  var isLoading = true;
 
   HomeProvider provider = Get.find();
 
@@ -23,6 +24,7 @@ class HomeController extends GetxController {
     debounce(
       searchText,
       (value) async {
+        isLoading = true;
         goodList.clear();
 
         Response response = await provider.search(value.toString());
@@ -106,7 +108,7 @@ class HomeController extends GetxController {
           print("up");
           update();
         }
-
+        isLoading = false;
       },
       time: Duration(milliseconds: 150),
     );
@@ -194,6 +196,7 @@ class HomeController extends GetxController {
     }
 
     print(goodList.length);
+    isLoading = false;
     update();
     super.onInit();
   }

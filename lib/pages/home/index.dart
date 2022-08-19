@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:urgent/pages/home/controller.dart';
+import 'package:urgent/widget/loading.dart';
 
 class HomePage extends GetView<HomeController> {
   @override
@@ -8,7 +9,7 @@ class HomePage extends GetView<HomeController> {
     return Scaffold(
       body: GetBuilder<HomeController>(
         builder: (controller) {
-          return ListView(
+          return Loading(child: ListView(
             shrinkWrap: true,
             children: [
               TextField(
@@ -33,7 +34,7 @@ class HomePage extends GetView<HomeController> {
                   )),
               ...controller.goodList,
             ],
-          );
+          ), isLoading: controller.isLoading);
         },
       ),
     );

@@ -7,6 +7,8 @@ import 'package:urgent/pages/home/binding.dart';
 import 'package:urgent/pages/home/index.dart';
 import 'package:urgent/pages/my_commodity/binding.dart';
 import 'package:urgent/pages/my_commodity/index.dart';
+import 'package:urgent/pages/my_commodity/io_history/binding.dart';
+import 'package:urgent/pages/my_commodity/io_history/index.dart';
 import 'package:urgent/pages/my_commodity/out_stock/binding.dart';
 import 'package:urgent/pages/my_commodity/out_stock/index.dart';
 import 'package:urgent/pages/my_commodity/warehousing/binding.dart';
@@ -51,6 +53,11 @@ class AppPages {
           name: AppRoutes.OutStock,
           page: () => OutStockPage(),
           binding: OutStockBinding(),
+        ),
+        GetPage(
+          name: AppRoutes.IOHistory,
+          page: () => IOHistoryPage(),
+          binding: IOHistoryBinding(),
         )
       ],
     ),

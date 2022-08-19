@@ -65,7 +65,13 @@ class MyCommodityPage extends GetView<MyCommodityController> {
                 controller.flashPage();
               },
               child: Text("出库")),
-
+          ElevatedButton(
+              onPressed: () async {
+                await Get.toNamed("/home/io_history",
+                    arguments: {"goods": controller.good});
+                controller.flashPage();
+              },
+              child: Text("進出庫記錄")),
           ElevatedButton(
               onPressed: () {
                 Get.back();
