@@ -1,4 +1,3 @@
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:urgent/common/entity/good.dart';
 import 'package:urgent/pages/my_commodity/provider.dart';
@@ -8,6 +7,7 @@ class MyCommodityController extends GetxController {
   final String barcode = Get.arguments["barcode"];
 
   bool isLoading = true;
+  String name = "";
   Good? good;
 
   MyCommodityProvider provider = Get.find();
@@ -27,10 +27,11 @@ class MyCommodityController extends GetxController {
       return;
     }
 
-    good = Good.fromJson(response.body);
-    isLoading = false;
+    var god = Good.fromJson(response.body);
+    name = god.data?.name??"";
+    good = god;
 
+    isLoading = false;
     update();
   }
-
 }

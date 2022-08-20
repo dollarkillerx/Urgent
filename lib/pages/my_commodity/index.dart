@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:urgent/common/library/img.dart';
-import 'package:urgent/components/loading_overlay.dart';
+import 'package:urgent/widget/loading.dart';
 import 'controller.dart';
 
 class MyCommodityPage extends GetView<MyCommodityController> {
   _goods() {
-    if (controller.good != null) {
+    if (controller.good != null && controller.good!.data != null) {
       return ListView(
         children: <Widget>[
           ListTile(
@@ -108,7 +108,7 @@ class MyCommodityPage extends GetView<MyCommodityController> {
       return Scaffold(
         appBar: AppBar(
           title: Text(
-            "我的商品",
+            "我的商品 ${controller.name}",
             style: TextStyle(color: Colors.black),
           ),
           backgroundColor: Colors.transparent,
@@ -116,7 +116,7 @@ class MyCommodityPage extends GetView<MyCommodityController> {
         ),
         body: Padding(
           padding: EdgeInsets.all(10),
-          child: LoadingOverlay(
+          child: Loading(
             isLoading: controller.isLoading,
             child: _goods(),
           ),
