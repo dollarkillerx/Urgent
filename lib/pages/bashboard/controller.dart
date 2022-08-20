@@ -17,6 +17,9 @@ class DashBoardController extends GetxController {
         title =  title = "ようこそ ${storehouse}";
         break;
       case 1:
+        title = "Statistics";
+        break;
+      case 2:
         title = "Tools";
         break;
     }

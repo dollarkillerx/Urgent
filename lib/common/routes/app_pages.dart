@@ -16,8 +16,10 @@ import 'package:urgent/pages/my_commodity/warehousing/index.dart';
 import 'package:urgent/pages/notfound/index.dart';
 import 'package:urgent/pages/online_commodity/binding.dart';
 import 'package:urgent/pages/online_commodity/index.dart';
+import 'package:urgent/pages/statistics/binding.dart';
 import '../../pages/my_commodity/add_commondity/binding.dart';
 import '../../pages/my_commodity/add_commondity/index.dart';
+import '../../pages/statistics/index.dart';
 import 'app_routes.dart';
 
 class AppPages {
@@ -58,6 +60,11 @@ class AppPages {
           name: AppRoutes.IOHistory,
           page: () => IOHistoryPage(),
           binding: IOHistoryBinding(),
+        ),
+        GetPage(
+          name: AppRoutes.Statistics,
+          page: () => StatisticsPage(),
+          binding: StatisticsBinding(),
         )
       ],
     ),

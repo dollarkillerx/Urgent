@@ -25,6 +25,7 @@ class IOHistoryController extends GetxController {
     Response response = await provider.ioHistory(goods.data!.id!);
     var err = NetTools.CheckError(response.body);
     if (err != null) {
+      Get.snackbar("錯誤", err);
       isLoading = false;
       update();
       return;
@@ -50,8 +51,8 @@ class IOHistoryController extends GetxController {
               Response response = await provider.ioRevoke(orderID);
               var err = NetTools.CheckError(response.body);
               if (err != null) {
+                Get.snackbar("錯誤", err);
                 isLoading = false;
-                Get.snackbar("錯誤", "$err");
                 update();
                 return;
               }

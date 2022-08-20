@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:urgent/pages/home/index.dart';
+import 'package:urgent/pages/statistics/index.dart';
 import 'package:urgent/pages/tools/index.dart';
 import '../category/index.dart';
 import 'controller.dart';
@@ -33,6 +34,7 @@ class DashBoardPage extends GetView<DashBoardController> {
             index: controller.tabIndex.value,
             children: [
               HomePage(),
+              StatisticsPage(),
               ToolsPage(),
             ],
           ),
@@ -47,6 +49,7 @@ class DashBoardPage extends GetView<DashBoardController> {
           showUnselectedLabels: true,  // 顯示未選中的labels
           items: <BottomNavigationBarItem>[
             _bottomNavigationBarItem(CupertinoIcons.home, "Home"),
+            _bottomNavigationBarItem(CupertinoIcons.square_stack_3d_down_right, "統計"),
             _bottomNavigationBarItem(CupertinoIcons.briefcase, "Tools"),
           ],
         ),
