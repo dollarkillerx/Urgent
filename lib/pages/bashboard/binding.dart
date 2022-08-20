@@ -12,11 +12,12 @@ class DashBoardBinding extends Bindings {
   void dependencies() {
     Get.lazyPut<DashBoardController>(() => DashBoardController());
     Get.lazyPut<HomeController>(() => HomeController());
-    Get.lazyPut<StatisticsController>(() => StatisticsController());
+    // Get.lazyPut<StatisticsController>(() => StatisticsController());
     // Get.put<ToolsController>(() => ToolsController());
     Get.put(ToolsController());
     Get.put(CategoryController());
     Get.put(HomeProvider());
     Get.put(StatisticsProvider());
+    Get.put(StatisticsController());
   }
 }
