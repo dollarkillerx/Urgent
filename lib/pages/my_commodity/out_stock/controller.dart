@@ -29,7 +29,7 @@ class OutStockController extends GetxController {
     try {
       var np = int.parse(numberProducts.text);
       var nc = double.parse(cost.text);
-      var ncp = double.parse(price.text);
+      var ncp = double.parse(totalPrice.text);
       var response = await provider.outStock(OutStock(
         barcode: goods.data!.barcode,
         cost: nc,

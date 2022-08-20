@@ -6,21 +6,22 @@ import 'package:urgent/widget/loading.dart';
 import 'controller.dart';
 
 class IOHistoryPage extends GetView<IOHistoryController> {
-
   _goods() {
     if (controller.ioHistory != null) {
-        print(controller.ioHistory!.data!.length);
-        return ListView.builder(
-            itemCount: controller.ioHistory!.data!.length,
-            itemBuilder: (context, index) => buildItem(context, index));
+      print(controller.ioHistory!.data!.length);
+      return ListView.builder(
+          itemCount: controller.ioHistory!.data!.length,
+          itemBuilder: (context, index) => buildItem(context, index));
     }
 
     return ListView(
       padding: EdgeInsets.all(10),
       children: <Widget>[
-        ElevatedButton(onPressed: () {
-          Get.back();
-        }, child: Text("返回")),
+        ElevatedButton(
+            onPressed: () {
+              Get.back();
+            },
+            child: Text("返回")),
       ],
     );
   }
@@ -32,13 +33,16 @@ class IOHistoryPage extends GetView<IOHistoryController> {
       key: const ValueKey(0),
 
       // The end action pane is the one at the right or the bottom side.
-      endActionPane:  ActionPane(
+      endActionPane: ActionPane(
         motion: ScrollMotion(),
         children: [
           SlidableAction(
             flex: 1,
             onPressed: (context) {
-              controller.deleteOrder(controller.ioHistory!.data![index].id!);
+              controller.deleteOrder(
+                  context,
+                  controller.ioHistory!.data![index].id!,
+                  "確認刪除: ${controller.ioHistory!.data![index].createdAt!.substring(0, 19)} 數量: ${controller.ioHistory!.data![index].numberProducts} 訂單ID: ${controller.ioHistory!.data![index].id}");
             },
             backgroundColor: Colors.redAccent,
             foregroundColor: Colors.white,
@@ -56,10 +60,29 @@ class IOHistoryPage extends GetView<IOHistoryController> {
 
   Widget interData(IOHistoryItem cdata) {
     return ListTile(
-        title: Text('類型: ${cdata.inventoryType == 'depot'?'出庫':'入庫'}     時間: ${cdata.createdAt!.substring(0,19)}'),
-        subtitle: cdata.inventoryType == 'depot'?
-        Text("出庫數量: ${cdata.numberProducts}  單價: ${cdata.grossProfit} 總價: ${cdata.totalPrice}  成本: ${cdata.totalCost} 盈利: ${cdata.totalPrice - cdata.totalCost}"):
-        Text("入庫數量: ${cdata.numberProducts}  成本: ${cdata.totalCost}"),
+      title: Text(
+          '類型: ${cdata.inventoryType == 'depot' ? '出庫' : '入庫'}     時間: ${cdata.createdAt!.substring(0, 19)}'),
+      subtitle: cdata.inventoryType == 'depot'
+          ? Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("訂單ID: ${cdata.id}"),
+                Text(
+                    "出庫數量: ${cdata.numberProducts}  單價: ${(cdata.totalPrice! / cdata.numberProducts!).toStringAsFixed(2)} 總價: ${cdata.totalPrice?.toStringAsFixed(2)} "),
+                Text(
+                    "成本: ${cdata.totalCost?.toStringAsFixed(2)} 盈利: ${(cdata.totalPrice! - cdata.totalCost!).toStringAsFixed(2)} "),
+                cdata.remark == "" ? Center() : Text("備注: ${cdata.remark}"),
+              ],
+            )
+          : Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("訂單ID: ${cdata.id}"),
+                Text(
+                    "入庫數量: ${cdata.numberProducts} 單價: ${(cdata.totalCost! / cdata.numberProducts!).toStringAsFixed(2)} 成本: ${cdata.totalCost?.toStringAsFixed(2)}"),
+                cdata.remark == "" ? Center() : Text("備注: ${cdata.remark}"),
+              ],
+            ),
     );
   }
 
@@ -75,7 +98,10 @@ class IOHistoryPage extends GetView<IOHistoryController> {
           backgroundColor: Colors.transparent,
           elevation: 0,
         ),
-        body: Loading(child: _goods(),isLoading: controller.isLoading,),
+        body: Loading(
+          child: _goods(),
+          isLoading: controller.isLoading,
+        ),
       );
     });
   }

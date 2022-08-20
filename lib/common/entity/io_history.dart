@@ -37,9 +37,9 @@ class IOHistoryItem {
   String? barcode;
   String? goodsId;
   String? account;
-  dynamic? totalPrice;
-  dynamic? grossProfit;
-  dynamic? totalCost;
+  num? totalPrice;
+  num? grossProfit;
+  num? totalCost;
   int? numberProducts;
   String? remark;
 

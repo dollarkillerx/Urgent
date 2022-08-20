@@ -95,9 +95,10 @@ class HomeController extends GetxController {
                           ],
                         ),
                       ),
-                      onTap: () {
-                        Get.toNamed("/home/my_commodity",
+                      onTap: () async {
+                        await Get.toNamed("/home/my_commodity",
                             arguments: {"barcode": list.data![i].barcode});
+                        search.text = search.text + " ";
                       },
                     )));
               }
@@ -183,9 +184,10 @@ class HomeController extends GetxController {
                       ],
                     ),
                   ),
-                  onTap: () {
-                    Get.toNamed("/home/my_commodity",
+                  onTap: () async {
+                    await Get.toNamed("/home/my_commodity",
                         arguments: {"barcode": list.data![i].barcode});
+                    search.text = search.text + " ";
                   },
                 )));
           }
