@@ -17,6 +17,8 @@ import 'package:urgent/pages/notfound/index.dart';
 import 'package:urgent/pages/online_commodity/binding.dart';
 import 'package:urgent/pages/online_commodity/index.dart';
 import 'package:urgent/pages/statistics/binding.dart';
+import 'package:urgent/pages/statistics/io_list/binding.dart';
+import 'package:urgent/pages/statistics/io_list/index.dart';
 import '../../pages/my_commodity/add_commondity/binding.dart';
 import '../../pages/my_commodity/add_commondity/index.dart';
 import '../../pages/statistics/index.dart';
@@ -60,6 +62,11 @@ class AppPages {
           name: AppRoutes.IOHistory,
           page: () => IOHistoryPage(),
           binding: IOHistoryBinding(),
+        ),
+        GetPage(
+          name: AppRoutes.IOList,
+          page: () => IOListPage(),
+          binding: IOListBinding(),
         ),
         GetPage(
           name: AppRoutes.Statistics,

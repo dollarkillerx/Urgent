@@ -34,6 +34,7 @@ class StatisticsPage extends GetView<StatisticsController> {
       tileColor: index % 2 == 0? Colors.lightBlueAccent[100]: Colors.grey[100],
       title: Text(data.key!),
       subtitle: col,
+      onTap: data.onTap,
     );
   }
 

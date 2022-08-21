@@ -9,6 +9,7 @@ class AppRoutes {
   static const String WareHousing = '/warehousing';
   static const String IOHistory = '/io_history';
   static const String Statistics = '/statistics';
+  static const String IOList = '/io_list';
 
 
 

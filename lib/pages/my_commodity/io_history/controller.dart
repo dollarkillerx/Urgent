@@ -4,9 +4,7 @@ import 'package:urgent/pages/my_commodity/io_history/provider.dart';
 import '../../../common/entity/good.dart';
 import '../../../common/library/base_provider.dart';
 import 'package:flutter/material.dart';
-
 import '../../../widget/dialog.dart';
-
 
 class IOHistoryController extends GetxController {
   final Good goods = Get.arguments["goods"];
@@ -63,7 +61,6 @@ class IOHistoryController extends GetxController {
               update();
             },
           );
-        }
-    );
+        });
   }
 }

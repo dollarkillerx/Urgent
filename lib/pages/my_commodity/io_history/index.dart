@@ -54,12 +54,14 @@ class IOHistoryPage extends GetView<IOHistoryController> {
 
       // The child of the Slidable is what the user sees when the
       // component is not dragged.
-      child: interData(controller.ioHistory!.data![index]),
+      child: interData(controller.ioHistory!.data![index], index),
     );
   }
 
-  Widget interData(IOHistoryItem cdata) {
+  Widget interData(IOHistoryItem cdata, int index) {
     return ListTile(
+      tileColor:
+          index % 2 == 0 ? Colors.lightBlueAccent[100] : Colors.grey[100],
       title: Text(
           '類型: ${cdata.inventoryType == 'depot' ? '出庫' : '入庫'}     時間: ${cdata.createdAt!.substring(0, 19)}'),
       subtitle: cdata.inventoryType == 'depot'

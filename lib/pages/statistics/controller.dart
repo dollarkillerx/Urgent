@@ -26,6 +26,13 @@ class StatisticsController extends GetxController {
     }
 
     statistics = Statistics.fromJson(response.body);
+    statistics?.data?.add(StatisticsItem(
+      key: "出入庫記錄",
+      value: ["點擊我 查詢最近的出入庫記錄"],
+      onTap: () {
+        Get.toNamed("/home/io_list");
+      },
+    ));
     isLoading = false;
     update();
   }

@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 class Statistics {
   String? requestId;
   String? code;
@@ -30,8 +32,9 @@ class Statistics {
 class StatisticsItem {
   String? key;
   List<String>? value;
+  GestureTapCallback? onTap;
 
-  StatisticsItem({this.key, this.value});
+  StatisticsItem({this.key, this.value, this.onTap});
 
   StatisticsItem.fromJson(Map<String, dynamic> json) {
     key = json['key'];
