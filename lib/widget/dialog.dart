@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 ///自定义Dialog
 class CustomDialog extends StatefulWidget {
-
   //------------------不带图片的dialog------------------------
   final String? title; //弹窗标题
   final String? content; //弹窗内容
@@ -16,10 +15,24 @@ class CustomDialog extends StatefulWidget {
   final Function? dismissCallback; //弹窗关闭回调
 
   //------------------带图片的dialog------------------------
-  final String? image;//dialog添加图片
+  final String? image; //dialog添加图片
   final String? imageHintText; //图片下方的文本提示
 
-  const CustomDialog({Key? key, this.title, this.content, this.confirmContent, this.confirmTextColor, this.isCancel = true, this.confirmColor, this.cancelColor, this.outsideDismiss = true, this.confirmCallback, this.dismissCallback, this.image, this.imageHintText}) : super(key: key);
+  const CustomDialog(
+      {Key? key,
+      this.title,
+      this.content,
+      this.confirmContent,
+      this.confirmTextColor,
+      this.isCancel = true,
+      this.confirmColor,
+      this.cancelColor,
+      this.outsideDismiss = true,
+      this.confirmCallback,
+      this.dismissCallback,
+      this.image,
+      this.imageHintText})
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -28,7 +41,6 @@ class CustomDialog extends StatefulWidget {
 }
 
 class _CustomDialogState extends State<CustomDialog> {
-
   _confirmDialog() {
     _dismissDialog();
     if (widget.confirmCallback != null) {
@@ -50,76 +62,88 @@ class _CustomDialogState extends State<CustomDialog> {
 
     Column _columnText = Column(
       children: <Widget>[
-        SizedBox(
-            height: widget.title == null ? 0 : 16.0
-        ),
-        Text(
-            widget.title == null ? '' : widget.title!,
-            style: TextStyle(fontSize: 16.0)
-        ),
+        SizedBox(height: widget.title == null ? 0 : 16.0),
+        Text(widget.title == null ? '' : widget.title!,
+            style: TextStyle(fontSize: 16.0)),
         Expanded(
             child: Center(
-              child: Text(
-                  widget.content == null ? '' : widget.content!,
-                  style: TextStyle(fontSize: 14.0)
-              ),
+              child: Text(widget.content == null ? '' : widget.content!,
+                  style: TextStyle(fontSize: 14.0)),
             ),
-            flex: 1
-        ),
-        SizedBox(
-            height: 1.0,
-            child: Container(color: Color(0xDBDBDBDB))
-        ),
+            flex: 1),
+        SizedBox(height: 1.0, child: Container(color: Color(0xDBDBDBDB))),
         Container(
             height: 45,
             child: Row(
               children: <Widget>[
                 Expanded(
-                    child: widget.isCancel ? Container(
-                      decoration: BoxDecoration(
-                          color: widget.cancelColor == null ? Color(0xFFFFFFFF) : widget.cancelColor,
-                          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(12.0))
-                      ),
-                      child: FlatButton(
-                        child: Text(
-                            '取消',
-                            style: TextStyle(
-                              fontSize: 16.0,
-                              color: widget.cancelColor == null ? Colors.black87 : Color(0xFFFFFFFF),
-                            )
-                        ),
-                        onPressed: _dismissDialog,
-                        splashColor: widget.cancelColor == null ? Color(0xFFFFFFFF) : widget.cancelColor,
-                        highlightColor: widget.cancelColor == null ? Color(0xFFFFFFFF) : widget.cancelColor,
-                      ),
-                    ) : Text(''),
-                    flex: widget.isCancel ? 1 : 0
-                ),
-                SizedBox(width: widget.isCancel ? 1.0 : 0,child: Container(color: Color(0xDBDBDBDB))),
+                    child: widget.isCancel
+                        ? Container(
+                            decoration: BoxDecoration(
+                                color: widget.cancelColor == null
+                                    ? Color(0xFFFFFFFF)
+                                    : widget.cancelColor,
+                                borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(12.0))),
+                            child: FlatButton(
+                              child: Text('取消',
+                                  style: TextStyle(
+                                    fontSize: 16.0,
+                                    color: widget.cancelColor == null
+                                        ? Colors.black87
+                                        : Color(0xFFFFFFFF),
+                                  )),
+                              onPressed: _dismissDialog,
+                              splashColor: widget.cancelColor == null
+                                  ? Color(0xFFFFFFFF)
+                                  : widget.cancelColor,
+                              highlightColor: widget.cancelColor == null
+                                  ? Color(0xFFFFFFFF)
+                                  : widget.cancelColor,
+                            ),
+                          )
+                        : Text(''),
+                    flex: widget.isCancel ? 1 : 0),
+                SizedBox(
+                    width: widget.isCancel ? 1.0 : 0,
+                    child: Container(color: Color(0xDBDBDBDB))),
                 Expanded(
                     child: Container(
                       decoration: BoxDecoration(
-                          color: widget.confirmColor == null ? Color(0xFFFFFFFF) : widget.confirmColor,
-                          borderRadius: widget.isCancel ? BorderRadius.only(bottomRight: Radius.circular(12.0)) : BorderRadius.only(bottomLeft: Radius.circular(12.0), bottomRight: Radius.circular(12.0))
-                      ),
+                          color: widget.confirmColor == null
+                              ? Color(0xFFFFFFFF)
+                              : widget.confirmColor,
+                          borderRadius: widget.isCancel
+                              ? BorderRadius.only(
+                                  bottomRight: Radius.circular(12.0))
+                              : BorderRadius.only(
+                                  bottomLeft: Radius.circular(12.0),
+                                  bottomRight: Radius.circular(12.0))),
                       child: FlatButton(
                         onPressed: _confirmDialog,
                         child: Text(
-                            widget.confirmContent == null ? '确定' : widget.confirmContent!,
+                            widget.confirmContent == null
+                                ? '确定'
+                                : widget.confirmContent!,
                             style: TextStyle(
                               fontSize: 16.0,
-                              color: widget.confirmColor == null ? (widget.confirmTextColor == null ? Colors.black87 : widget.confirmTextColor) : Color(0xFFFFFFFF),
-                            )
-                        ),
-                        splashColor: widget.confirmColor == null ? Color(0xFFFFFFFF) : widget.confirmColor,
-                        highlightColor: widget.confirmColor == null ? Color(0xFFFFFFFF) : widget.confirmColor,
+                              color: widget.confirmColor == null
+                                  ? (widget.confirmTextColor == null
+                                      ? Colors.black87
+                                      : widget.confirmTextColor)
+                                  : Color(0xFFFFFFFF),
+                            )),
+                        splashColor: widget.confirmColor == null
+                            ? Color(0xFFFFFFFF)
+                            : widget.confirmColor,
+                        highlightColor: widget.confirmColor == null
+                            ? Color(0xFFFFFFFF)
+                            : widget.confirmColor,
                       ),
                     ),
-                    flex: 1
-                ),
+                    flex: 1),
               ],
-            )
-        )
+            ))
       ],
     );
 
@@ -131,24 +155,16 @@ class _CustomDialogState extends State<CustomDialog> {
         Image(
             image: AssetImage(widget.image == null ? '' : widget.image!),
             width: 72.0,
-            height: 72.0
-        ),
-        SizedBox(
-            height: 10.0
-        ),
-        Text(
-            widget.imageHintText == null ? "" : widget.imageHintText!,
-            style: TextStyle(fontSize: 16.0)
-        ),
+            height: 72.0),
+        SizedBox(height: 10.0),
+        Text(widget.imageHintText == null ? "" : widget.imageHintText!,
+            style: TextStyle(fontSize: 16.0)),
       ],
     );
 
-
     return WillPopScope(
         child: GestureDetector(
-          onTap: () => {
-            widget.outsideDismiss ? _dismissDialog() : null
-          },
+          onTap: () => {widget.outsideDismiss ? _dismissDialog() : null},
           child: Material(
             type: MaterialType.transparency,
             child: Center(
@@ -159,15 +175,13 @@ class _CustomDialogState extends State<CustomDialog> {
                 child: widget.image == null ? _columnText : _columnImage,
                 decoration: BoxDecoration(
                     color: Color(0xFFFFFFFF),
-                    borderRadius: BorderRadius.circular(12.0)
-                ),
+                    borderRadius: BorderRadius.circular(12.0)),
               ),
             ),
           ),
         ),
         onWillPop: () async {
           return widget.outsideDismiss;
-        }
-    );
+        });
   }
 }
