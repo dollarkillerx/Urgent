@@ -5,6 +5,7 @@ class AppRoutes {
   static const String OnlineCommodity = '/online_commodity';
   static const String MyCommodity = '/my_commodity';
   static const String AddCommodity = '/add_commodity';
+  static const String ModifyCommodity = '/modify_commodity';
   static const String OutStock = '/out_stock';
   static const String WareHousing = '/warehousing';
   static const String IOHistory = '/io_history';

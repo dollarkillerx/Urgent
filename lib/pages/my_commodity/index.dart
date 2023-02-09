@@ -51,6 +51,7 @@ class MyCommodityPage extends GetView<MyCommodityController> {
             }
             return SizedBox();
           }(),
+
           ElevatedButton(
               onPressed: () async {
                 await Get.toNamed("/home/warehousing",
@@ -72,6 +73,13 @@ class MyCommodityPage extends GetView<MyCommodityController> {
                 controller.flashPage();
               },
               child: Text("進出庫記錄")),
+          ElevatedButton(
+              onPressed: () async {
+                await Get.toNamed("/home/modify_commodity",
+                    arguments: {"goods": controller.good});
+                controller.flashPage();
+              },
+              child: Text("修改")),
           ElevatedButton(
               onPressed: () {
                 Get.back();

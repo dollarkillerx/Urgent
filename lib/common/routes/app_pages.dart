@@ -9,6 +9,8 @@ import 'package:urgent/pages/my_commodity/binding.dart';
 import 'package:urgent/pages/my_commodity/index.dart';
 import 'package:urgent/pages/my_commodity/io_history/binding.dart';
 import 'package:urgent/pages/my_commodity/io_history/index.dart';
+import 'package:urgent/pages/my_commodity/modify_commpdity/binding.dart';
+import 'package:urgent/pages/my_commodity/modify_commpdity/index.dart';
 import 'package:urgent/pages/my_commodity/out_stock/binding.dart';
 import 'package:urgent/pages/my_commodity/out_stock/index.dart';
 import 'package:urgent/pages/my_commodity/warehousing/binding.dart';
@@ -47,6 +49,11 @@ class AppPages {
           name: AppRoutes.AddCommodity,
           page: () => AddCommodityPage(),
           binding: AddCommodityBinding(),
+        ),
+        GetPage(
+          name: AppRoutes.ModifyCommodity,
+          page: () => ModifyCommodityPage(),
+          binding: ModifyCommodityBinding(),
         ),
         GetPage(
           name: AppRoutes.WareHousing,
