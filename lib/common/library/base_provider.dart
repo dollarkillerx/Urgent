@@ -4,8 +4,8 @@ import '../entity/gener_resp.dart';
 import '../entity/jwt.dart';
 import '../storage/user_info.dart';
 
-const SERVER_API_URL = "http://192.168.31.30:8574/api/v1";
-// const SERVER_API_URL = "https://inventory.worldlink.net.cn/api/v1";
+// const SERVER_API_URL = "http://192.168.31.30:8574/api/v1";
+const SERVER_API_URL = "https://inventory.worldlink.net.cn/api/v1";
 
 class NetTools {
   static String? CheckError(Map<String, dynamic> postsJson) {
