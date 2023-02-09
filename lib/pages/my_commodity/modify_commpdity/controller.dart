@@ -43,7 +43,7 @@ class ModifyCommodityController extends GetxController {
     update();
   }
 
-  addGoods() async {
+  modifyGoods() async {
     if (!(goods.data!.id!.isNotEmpty &&
         name.text.isNotEmpty &&
         price.text.isNotEmpty &&

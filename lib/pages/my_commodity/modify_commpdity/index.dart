@@ -90,7 +90,7 @@ class ModifyCommodityPage extends GetView<ModifyCommodityController> {
           pickImage();
         }, child: Text("拍照")),
         ElevatedButton(onPressed: () {
-          controller.addGoods();
+          controller.modifyGoods();
         }, child: Text("修改商品")),
         ElevatedButton(onPressed: () {
           Get.back();

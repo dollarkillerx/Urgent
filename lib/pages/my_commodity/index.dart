@@ -51,12 +51,11 @@ class MyCommodityPage extends GetView<MyCommodityController> {
             }
             return SizedBox();
           }(),
-
           ElevatedButton(
               onPressed: () async {
                 await Get.toNamed("/home/warehousing",
                     arguments: {"goods": controller.good});
-                  controller.flashPage();
+                controller.flashPage();
               },
               child: Text("入库")),
           ElevatedButton(
@@ -80,6 +79,13 @@ class MyCommodityPage extends GetView<MyCommodityController> {
                 controller.flashPage();
               },
               child: Text("修改")),
+          ElevatedButton(
+              onPressed: () async {
+                // delete
+                await controller.deleteGood(controller.good!);
+              },
+              style: ElevatedButton.styleFrom(primary: Colors.redAccent),
+              child: Text("删除")),
           ElevatedButton(
               onPressed: () {
                 Get.back();

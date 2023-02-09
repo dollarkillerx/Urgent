@@ -42,7 +42,7 @@ class IOHistoryPage extends GetView<IOHistoryController> {
               controller.deleteOrder(
                   context,
                   controller.ioHistory!.data![index].id!,
-                  "確認刪除: ${controller.ioHistory!.data![index].createdAt!.substring(0, 19)} 數量: ${controller.ioHistory!.data![index].numberProducts} 訂單ID: ${controller.ioHistory!.data![index].id}");
+                  "確認刪除: ${controller.ioHistory!.data![index].createdAt!.substring(0, 19)}  \n 數量: ${controller.ioHistory!.data![index].numberProducts}  \n 訂單ID: ${controller.ioHistory!.data![index].id}");
             },
             backgroundColor: Colors.redAccent,
             foregroundColor: Colors.white,
